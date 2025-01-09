@@ -1,21 +1,47 @@
-{{etudiant | json}}
+<!--{{etudiant | json}}-->
+<div class="container-fluid">
+  <div class="row border border-2 border-primary m-1 rounded ">
+    <div class="bg-primary  p-2 rounded text-light col-12">
+      etudiant {{etudiant?.code}}
+    </div>
+    <div class="col-12 col-lg border p-2">
+      <span class="ipslLabel">Prenom : </span>
+      <span class="ipslVal">{{etudiant?.prenom}}</span> <br>
 
-<div class="border border-2 border-primary m-1 rounded">
-  <div class="bg-primary m-1 p-2 rounded text-light">
-    etudiant {{etudiant?.code}}
-  </div>
-  <div>
-    <span>Prenom : </span>
-    <span>{{etudiant?.prenom}}</span> <br>
+      <span>Nom : </span>
+      <span>{{etudiant?.nom}}</span> <br>
 
-    <span>Nom : </span>
-    <span>{{etudiant?.nom}}</span> <br>
+      <span>Adresse : </span>
+      <span>{{etudiant?.adresse}}</span> <br>
 
-    <span>Adresse : </span>
-    <span>{{etudiant?.adresse}}</span> <br>
+      <span>Telephone : </span>
+      <span>{{etudiant?.telefone}}</span> <br>
 
-    <span>Telephone : </span>
-    <span>{{etudiant?.telefone}}</span> <br>
+    </div>
+    <div class="col-12 col-md col-lg border m-2 p-2">
+      <span>Classe : </span>
+      <span>{{etudiant?.classe?.nom}}</span> <br>
 
+      <span>Filiere : </span>
+      <span>{{etudiant?.classe?.filiere?.nom}}</span> <br>
+
+      <span>Departement : </span>
+      <span>{{etudiant?.classe?.filiere?.dept?.nom}}</span> <br>
+
+
+    </div>
+
+    <div class="col-12 col-md col-lg d-none d-md-block border m-2 p-2 ">
+      <span>Numero : </span>
+      <span>{{carte?.id}}</span> <br>
+
+      <span>Date de delivrance : </span>
+      <span>{{carte?.dateDel | date : "yyyy-MM-dd"}}</span> <br>
+
+      <span>Annee Academique : </span>
+      <span>{{getAnneeScolaire()}}</span> <br>
+
+    </div>
   </div>
 </div>
+

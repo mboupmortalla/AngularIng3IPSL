@@ -1,4 +1,4 @@
-import {Classe, Departement, Etudiant} from "./IpslModele";
+import {Carte, Classe, Departement, Etudiant} from "./IpslModele";
 
 export var deptGIT: Departement ={
   code:"GIT",
@@ -55,3 +55,11 @@ export var listeEtudiants:Etudiant []=[
     classe:ing3Info
   }
 ]
+
+export var carteSylla : Carte ={
+  id:278176,
+  anneeDebut:2024,
+  dateDel: new Date(Date.parse("2024-06-01")),
+  etudiant:etudiantSylla,
+  payante:false
+}

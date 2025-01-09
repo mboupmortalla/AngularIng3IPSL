@@ -1,22 +1,31 @@
 import {Component, OnInit} from '@angular/core';
-import {Etudiant} from "../IpslModele";
-import {etudiantSylla} from "../data";
-import {JsonPipe} from "@angular/common";
+import {Carte, Etudiant} from "../IpslModele";
+import {carteSylla, etudiantSylla} from "../data";
+import {DatePipe, JsonPipe} from "@angular/common";
 
 @Component({
   selector: 'app-detail-etudiant',
   standalone: true,
   imports: [
-    JsonPipe
+    JsonPipe,
+    DatePipe
   ],
   templateUrl: './detail-etudiant.component.html',
   styleUrl: './detail-etudiant.component.scss'
 })
 export class DetailEtudiantComponent implements OnInit {
-  etudiant?: Etudiant ;
+  carte?: Carte ;
+  etudiant?: Etudiant;
 
   ngOnInit(): void {
-    this.etudiant=etudiantSylla;
+    this.carte=carteSylla;
+    this.etudiant=carteSylla.etudiant;
   }
-
+  getAnneeScolaire():string{
+    if(this.carte?.anneeDebut)
+    {
+      return `${this.carte?.anneeDebut} - ${this.carte?.anneeDebut+1}`;
+    }
+    return "Annee non detereminee";
+  }
 }
