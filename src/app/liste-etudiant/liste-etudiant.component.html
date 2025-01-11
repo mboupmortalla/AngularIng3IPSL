@@ -6,9 +6,11 @@
     </div>
     <div class="col-12 ">
 <!--           [style.background-color]="e.classe.filiere.code=='INF' ? 'rgb(215,236,215)' : 'rgb(243,228,228)'"-->
+<!--           [ngStyle]="getEtudiantStyle(e.classe.filiere)"-->
 <!--           [ngStyle]="styleInformatique"-->
       <div *ngFor="let e of etudiants"
-           [ngStyle]="getEtudiantStyle(e.classe.filiere)"
+           [ngStyle]="selectedEtudiant?.code==e.code ? styleInformatique : styleCivil"
+           (mouseover)="selectEtudiant(e)"
           class="border border-2 border-primary rounded mt-2 ps-4 pt-2 pb-5"  >
         <span> Etudiant : </span>
         <span>{{e.code}}</span><br>
@@ -28,7 +30,7 @@
         <span> Classe : </span>
         <span>{{e.classe?.nom}}</span><br>
           <input [type]="inputType" [value]="inputValue"/>
-          <div style="float: right;" >
+          <div style="float: right;" *ngIf="selectedEtudiant?.code==e.code">
             <button type="button" class="btn btn-link mx-2 " [disabled]="e.classe.filiere.code!='INF'" >Details </button>
             <button type="button" class="btn btn-primary mx-2" [disabled]="e.classe.filiere.code!='INF'">Modifier </button>
             <button type="button" class="btn btn-outline-danger mx-2" [disabled]="e.classe.filiere.code!='INF'">Supprimer </button>

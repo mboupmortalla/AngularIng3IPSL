@@ -17,6 +17,7 @@ export class ListeEtudiantComponent {
   inputType="text";
   inputValue='ras';
   etudiants=listeEtudiants;
+  selectedEtudiant?: Etudiant;
 
   styleInformatique={
     "color":"white",
@@ -35,5 +36,9 @@ export class ListeEtudiantComponent {
       return this.styleInformatique;
     }
     return this.styleCivil;
+  }
+
+  selectEtudiant(e: Etudiant) {
+    this.selectedEtudiant=e;
   }
 }
