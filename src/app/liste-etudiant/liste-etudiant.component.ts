@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {Etudiant} from "../IpslModele";
+import {Etudiant, Filiere} from "../IpslModele";
 import {listeEtudiants} from "../data";
 import {CommonModule, JsonPipe} from "@angular/common";
 
@@ -18,4 +18,22 @@ export class ListeEtudiantComponent {
   inputValue='ras';
   etudiants=listeEtudiants;
 
+  styleInformatique={
+    "color":"white",
+    "font-weight":"bold",
+    "background-color":"green"
+  }
+
+  styleCivil={
+    "color":"white",
+    "font-weight":"bold",
+    "background-color":"red"
+  }
+
+  getEtudiantStyle(filiere: Filiere) {
+    if (filiere.code=='INF'){
+      return this.styleInformatique;
+    }
+    return this.styleCivil;
+  }
 }

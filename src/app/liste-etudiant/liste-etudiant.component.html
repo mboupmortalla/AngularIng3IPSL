@@ -5,9 +5,11 @@
       Liste des etudiants
     </div>
     <div class="col-12 ">
+<!--           [style.background-color]="e.classe.filiere.code=='INF' ? 'rgb(215,236,215)' : 'rgb(243,228,228)'"-->
+<!--           [ngStyle]="styleInformatique"-->
       <div *ngFor="let e of etudiants"
-           [style.background-color]="e.classe.filiere.code=='INF' ? 'rgb(215,236,215)' : 'rgb(243,228,228)'"
-           class="border border-2 border-primary rounded mt-2 ps-4 pt-2 pb-5"  >
+           [ngStyle]="getEtudiantStyle(e.classe.filiere)"
+          class="border border-2 border-primary rounded mt-2 ps-4 pt-2 pb-5"  >
         <span> Etudiant : </span>
         <span>{{e.code}}</span><br>
 
