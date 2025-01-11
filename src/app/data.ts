@@ -23,6 +23,12 @@ export var ing3Info : Classe={
   filiere:{code:"INF",nom:"Informatique",dept:deptGIT},
 
 }
+export var ing3Civil : Classe={
+  code:"ING3",
+  nom:"Ing 3 Civil",
+  filiere:{code:"CIV",nom:"Civil",dept:deptGeC},
+
+}
 
 export var etudiantSylla: Etudiant={
   code:"P3156",
@@ -35,6 +41,15 @@ export var etudiantSylla: Etudiant={
 }
 
 export var listeEtudiants:Etudiant []=[
+  {
+    code:"P3196",
+    nom:"Mbaye",
+    prenom:"Modou",
+    adresse:"Kolda",
+    email:"MbayeModou@gmail.com",
+    telefone:"789874309",
+    classe:ing3Civil
+  },
   etudiantSylla,
   {
     code:"P3126",
@@ -45,6 +60,16 @@ export var listeEtudiants:Etudiant []=[
     telefone:"786452309",
     classe:ing3Info
   },
+  {
+    code:"P3136",
+    nom:"Ndiaye",
+    prenom:"Fatou",
+    adresse:"Saint-Louis",
+    email:"NdiayeFatou@gmail.com",
+    telefone:"782562309",
+    classe:ing3Civil
+  },
+
   {
     code:"P3101",
     nom:"Sall",

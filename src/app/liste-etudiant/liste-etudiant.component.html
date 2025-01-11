@@ -1,1 +1,36 @@
-<p>liste-etudiant works!</p>
+<!--{{etudiants | json}}-->
+<div class="container">
+  <div class="row">
+    <div class="h2">
+      Liste des etudiants
+    </div>
+    <div class="col-12 ">
+      <div *ngFor="let e of etudiants" class="border border-2 border-primary rounded mt-2 ps-4 pt-2 pb-5"  >
+        <span> Etudiant : </span>
+        <span>{{e.code}}</span><br>
+
+        <span> Prenom : </span>
+        <span>{{e.prenom}}</span><br>
+
+        <span> Nom : </span>
+        <span>{{e.nom}}</span><br>
+
+        <span> Adresse : </span>
+        <span>{{e.adresse}}</span><br>
+
+        <span> Telephone : </span>
+        <span>{{e.telefone}}</span><br>
+
+        <span> Classe : </span>
+        <span>{{e.classe?.nom}}</span><br>
+          <input type="{{inputType}}" value="{{inputValue}}"/>
+          <div style="float: right;" *ngIf="e.classe.filiere.code=='INF'">
+            <button type="button" class="btn btn-link mx-2 " disabled="true" >Details </button>
+            <button type="button" class="btn btn-primary mx-2">Modifier </button>
+            <button type="button" class="btn btn-outline-danger mx-2">Supprimer </button>
+
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
