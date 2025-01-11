@@ -23,11 +23,11 @@
 
         <span> Classe : </span>
         <span>{{e.classe?.nom}}</span><br>
-          <input type="{{inputType}}" value="{{inputValue}}"/>
-          <div style="float: right;" *ngIf="e.classe.filiere.code=='INF'">
-            <button type="button" class="btn btn-link mx-2 " disabled="true" >Details </button>
-            <button type="button" class="btn btn-primary mx-2">Modifier </button>
-            <button type="button" class="btn btn-outline-danger mx-2">Supprimer </button>
+          <input [type]="inputType" [value]="inputValue"/>
+          <div style="float: right;" >
+            <button type="button" class="btn btn-link mx-2 " [disabled]="e.classe.filiere.code!='INF'" >Details </button>
+            <button type="button" class="btn btn-primary mx-2" [disabled]="e.classe.filiere.code!='INF'">Modifier </button>
+            <button type="button" class="btn btn-outline-danger mx-2" [disabled]="e.classe.filiere.code!='INF'">Supprimer </button>
 
           </div>
       </div>
