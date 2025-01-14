@@ -1,4 +1,4 @@
-import {Carte, Classe, Departement, Etudiant} from "./IpslModele";
+import {Carte, Classe, Departement, Etudiant, MenuResto} from "./IpslModele";
 
 export var deptGIT: Departement ={
   code:"GIT",
@@ -88,3 +88,37 @@ export var carteSylla : Carte ={
   etudiant:etudiantSylla,
   payante:false
 }
+
+export const CATEGORIES=["vegetarien","fast-food","senegalais","africain"];
+export var MENUS:MenuResto[] =[
+  {
+    code:"RAP",
+    nom:"Riz au poisson",
+    prix:3500,
+    categorie:CATEGORIES[2]
+  },
+  {
+    code:"CM",
+    nom:"Coucous Marocaine",
+    prix:2500,
+    categorie:CATEGORIES[3]
+  },
+  {
+    code:"YP",
+    nom:"Yassa poulet",
+    prix:5500,
+    categorie:CATEGORIES[2]
+  },
+  {
+    code:"DMD",
+    nom:"Domada",
+    prix:3500,
+    categorie:CATEGORIES[2]
+  },
+  {
+    code:"HBG",
+    nom:"Hamburger",
+    prix:2000,
+    categorie:CATEGORIES[1]
+  }
+]

@@ -1,0 +1,61 @@
+
+  <form [formGroup]="commandeForm" (ngSubmit)="enregistrer()">
+    <span class="h2">Formulaire Commande</span>
+    <div class="form-floating mb-3">
+      <input type="text"
+             name="prenom"
+             formControlName="prenom"
+             class="form-control"
+             id="floatingInput"
+             placeholder="name@example.com" required>
+      <label for="floatingInput">prenom</label>
+
+    </div>
+    <div class="form-floating mb-3">
+      <input type="text"
+             name="nom"
+             formControlName="nom"
+             class="form-control"
+             id="nom"
+             placeholder="name@example.com" required>
+      <label for="nom">nom</label>
+
+    </div>
+    <div class="form-floating mb-3">
+      <input type="text"
+             name="adresse"
+             formControlName="adresse"
+             class="form-control"
+             id="adresse"
+             placeholder="name@example.com" required>
+      <label for="adresse">adresse</label>
+
+    </div>
+    <div class="form-floating mb-3">
+      <input type="text"
+             name="telephone"
+             formControlName="telephone"
+             class="form-control"
+             id="telephone"
+             placeholder="name@example.com" required>
+      <label for="telephone">Telephone</label>
+
+    </div>
+    <div formArrayName="commande" >
+      <span class="h2">Menu du jour </span>
+      <ng-container *ngFor="let menu of getMenu.controls; let i = index;" [formGroupName]="i">
+        <div [class.bg-primary]="getMenu.controls[i].get('selected')?.value" class="border mb-3 p-2 " (click)="selectionne(i)">
+            Prix : {{getMenu.controls[i].get('prix')?.value}} <br>
+            Nom : {{getMenu.controls[i].get('nom')?.value}} <br>
+            Description :{{getMenu.controls[i].get('description')?.value}} <br>
+          </div>
+      </ng-container>
+    </div>
+    <button type="submit"
+            class="btn btn-primary me-2"
+    >Ajouter</button>
+    <button type="reset"
+            class="btn btn-outline-danger me-2"
+            (click)="annuler()">Annuler</button>
+  </form>
+

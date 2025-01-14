@@ -48,3 +48,11 @@ export interface Carte{
   payante:boolean;
 
 }
+
+export interface MenuResto{
+  code: string;
+  nom: string;
+  description?: string;
+  prix:number;
+  categorie: string;
+}
