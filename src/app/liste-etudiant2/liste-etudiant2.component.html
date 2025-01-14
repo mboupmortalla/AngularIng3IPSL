@@ -1,34 +1,41 @@
+<!--          [ngStyle]="getEvenStyle(i+1)" -->
+<!--    [style.text-decoration]="selectedEtudiant==e ? 'underline' : 'none' "  >-->
 <div class="m-2">
-  <table class="table" >
-    <thead>
-      <tr>
-        <th scope="col">N°</th>
-        <th scope="col">Promotion</th>
-        <th scope="col">Prenom</th>
-        <th scope="col">Nom</th>
-        <th scope="col">Adresse</th>
-        <th scope="col">Telephone</th>
-        <th scope="col">Classe</th>
-        <th scope="col">Action</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr scope="row" *ngFor="let e of etudiants ; let i = index ; let isEven = even" [ngStyle]="getEvenStyle(i+1)" (click)="SelectE(e) " [style.text-decoration]="selectedEtudiant==e ? 'underline' : 'none' "  >
-        <th [ngStyle]="getEvenStyle(i+1)" (click)="SelectE(e) " [style.text-decoration]="selectedEtudiant==e ? 'underline' : 'none' " >{{i+1}}</th>
-        <td [ngStyle]="getEvenStyle(i+1)" (click)="SelectE(e) " [style.text-decoration]="selectedEtudiant==e ? 'underline' : 'none' " >{{e.code}}</td>
-        <td [ngStyle]="getEvenStyle(i+1)" (click)="SelectE(e) " [style.text-decoration]="selectedEtudiant==e ? 'underline' : 'none' " >{{e.prenom}}</td>
-        <td [ngStyle]="getEvenStyle(i+1)" (click)="SelectE(e) " [style.text-decoration]="selectedEtudiant==e ? 'underline' : 'none' " >{{e.nom}}</td>
-        <td [ngStyle]="getEvenStyle(i+1)" (click)="SelectE(e) " [style.text-decoration]="selectedEtudiant==e ? 'underline' : 'none' " >{{e.adresse}}</td>
-        <td [ngStyle]="getEvenStyle(i+1)" (click)="SelectE(e) " [style.text-decoration]="selectedEtudiant==e ? 'underline' : 'none' " >{{e.telefone}}</td>
-        <td [ngStyle]="getEvenStyle(i+1)" (click)="SelectE(e) " [style.text-decoration]="selectedEtudiant==e ? 'underline' : 'none' " >{{e.classe.nom}}</td>
-        <td [ngStyle]="getEvenStyle(i+1)" (click)="SelectE(e) " [style.text-decoration]="selectedEtudiant==e ? 'underline' : 'none' "  *ngIf="selectedEtudiant==e">
+  <table class="ipslTable" >
+  <tbody>
+    <tr scope="row"
+        *ngFor="let e of etudiants ; let i = index ; let isEven = even"
+        [class.even]="isEven"
+        [class.odd]="!isEven"
+        [class.selectedRow]="selectedEtudiant?.code==e.code"
+        (click)="SelectE(e) ">
+      <th   >{{i+1}}</th>
+      <td   >{{e.code}}</td>
+      <td   >{{e.prenom}}</td>
+      <td   >{{e.nom}}</td>
+      <td   >{{e.adresse}}</td>
+      <td   >{{e.telefone}}</td>
+      <td   >{{e.classe.nom}}</td>
+      <td    *ngIf="selectedEtudiant==e">
 
-            <button type="button" class="btn btn-link mx-2 "  >Details </button>
-            <button type="button" class="btn btn-primary mx-2" >Modifier </button>
-            <button type="button" class="btn btn-outline-danger mx-2" >Supprimer </button>
+        <button type="button" [class.btn]="true" class="btn btn-link mx-2 "  >Details </button>
+        <button type="button" class="btn btn-primary mx-2" >Modifier </button>
+        <button type="button" class="btn btn-outline-danger mx-2" >Supprimer </button>
 
-        </td>
-      </tr>
-    </tbody>
+      </td>
+    </tr>
+  </tbody>
+  <thead>
+  <tr>
+    <th scope="col">N°</th>
+    <th scope="col">Promotion</th>
+    <th scope="col">Prenom</th>
+    <th scope="col">Nom</th>
+    <th scope="col">Adresse</th>
+    <th scope="col">Telephone</th>
+    <th scope="col">Classe</th>
+    <th scope="col">Action</th>
+  </tr>
+  </thead>
   </table>
 </div>

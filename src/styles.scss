@@ -1,6 +1,58 @@
 @import "ipslVar";
 @import "../node_modules/bootstrap/scss/bootstrap";
 
+$evenRowColor: $success;
+
+$oddRowColor: $info;
+
+.rowTable
+{
+  font-size: $tableRowFontSize;
+  font-weight: bold;
+  cursor: pointer;
+  &:hover{
+    text-decoration: underline;
+  }
+}
+
+.ipslTable
+{
+  //@extend .table;
+  width: 100%;
+
+  .even
+  {
+    @extend .rowTable;
+    @extend .text-light;
+    background-color: $evenRowColor;
+    font-style: italic;
+    &:hover{
+      background-color: darken($evenRowColor,10);
+    }
+
+  }
+  .odd
+  {
+    @extend .rowTable;
+    @extend .text-dark;
+    background-color: $oddRowColor;
+    &:hover{
+      background-color: darken($oddRowColor,10);
+    }
+
+  }
+}
+
+
+
+
+.selectedRow
+{
+  @extend .rowTable;
+  @extend .bg-primary;
+  @extend .text-light;
+}
+
 .active{
     color: red;
     background-color: black;
