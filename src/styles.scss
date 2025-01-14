@@ -3,10 +3,16 @@
 
 $evenRowColor: $success;
 
+$evenRowColor: $dark;
+
 $oddRowColor: $info;
+
+$oddRowColor: $light;
 
 .rowTable
 {
+  @extend .p-2;
+  @extend .border-top;
   font-size: $tableRowFontSize;
   font-weight: bold;
   cursor: pointer;
