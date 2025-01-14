@@ -1,33 +1,124 @@
 
+<!--  {{etudiantForm.value | json}}-->
+<!--  <div>-->
+<!--    touched = {{etudiantForm.touched}} <br>-->
+<!--    untouched = {{etudiantForm.untouched}} <br>-->
+<!--    pristine = {{etudiantForm.pristine}} <br>-->
+<!--    dirty = {{etudiantForm.dirty}} <br>-->
+<!--    errors = {{etudiantForm.errors}} <br>-->
+<!--    valid = {{etudiantForm.valid}} <br>-->
+<!--    invalid = {{etudiantForm.invalid}} <br>-->
+<!--  </div>-->
 <div class="container-fluid">
   <p class="h2">Formulaire Etudiant</p>
-<form #etudiantForm="ngForm" >
+<form #etudiantForm="ngForm"  (ngSubmit)="enregistrer()">
   <div class="form-floating mb-3">
-    <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com">
+    <input type="text"
+           name="code"
+           #code="ngModel"
+           [(ngModel)]="etudiant.code"
+           class="form-control"
+           [class.is-valid]="code.valid && code.dirty"
+           [class.is-invalid]="code.invalid && code.touched"
+           id="floatingInput"
+           placeholder="name@example.com" required>
     <label for="floatingInput">Code</label>
+
   </div>
   <div class="form-floating mb-3">
-    <input type="text" class="form-control" id="floatingInputPr" placeholder="Password">
+    <input type="text" name="prenom"
+           [(ngModel)]="etudiant.prenom"
+           class="form-control "
+           #prenom="ngModel"
+           [class.is-valid]="prenom.valid && prenom.dirty"
+           [class.is-invalid]="prenom.invalid && prenom.touched"
+           required
+           id="floatingInputPr"
+           placeholder="Password">
     <label for="floatingInputPr">Prenom</label>
   </div>
   <div class="form-floating mb-3">
-    <input type="text" class="form-control" id="floatingInputNom" placeholder="Password">
+    <input type="text"
+           name="nom"
+           required
+           #nom="ngModel"
+           [class.is-valid]="nom.valid && nom.dirty"
+           [class.is-invalid]="nom.invalid && nom.touched"
+           [(ngModel)]="etudiant.nom"
+           class="form-control"
+           id="floatingInputNom"
+           placeholder="Password">
     <label for="floatingInputNom">Nom</label>
   </div>
   <div class="form-floating mb-3">
-    <input type="text" class="form-control" id="floatingAdresse" placeholder="Password">
+    <input type="text"
+           name="adresse"
+           required
+           #adresse="ngModel"
+           [class.is-valid]="adresse.valid && adresse.dirty"
+           [class.is-invalid]="adresse.invalid && adresse.touched"
+           [(ngModel)]="etudiant.adresse"
+           class="form-control"
+           id="floatingAdresse"
+           placeholder="Password">
     <label for="floatingAdresse">Adresse</label>
   </div>
   <div class="form-floating mb-3">
-    <input type="text" class="form-control" id="floatingMail" placeholder="Password">
+    <input type="text"
+           name="email"
+           required
+           #email="ngModel"
+           [class.is-valid]="email.valid && email.dirty"
+           [class.is-invalid]="email.invalid && email.touched"
+           [(ngModel)]="etudiant.email"
+           class="form-control"
+           id="floatingMail"
+           placeholder="Password">
     <label for="floatingMail">Email</label>
   </div>
   <div class="form-floating mb-3">
-    <input type="text" class="form-control" id="floatingTel" placeholder="Password">
+    <input type="text"
+           name="telephone"
+           required
+           #tel="ngModel"
+           [class.is-valid]="tel.valid && tel.dirty"
+           [class.is-invalid]="tel.invalid && tel.touched"
+           [(ngModel)]="etudiant.telefone"
+           class="form-control"
+           id="floatingTel"
+           placeholder="Password">
     <label for="floatingTel">Telephone</label>
   </div>
+
   <div class="form-floating mb-3">
-    <select class="form-select" id="floatingClasse" aria-label="Floating label select example">
+    <select class="form-select"
+            required
+            #dept="ngModel"
+            [class.is-valid]="dept.valid && dept.dirty"
+            [class.is-invalid]="dept.invalid && dept.touched"
+            id="floatingDept"
+            (change)="listeFiliere()"
+            name="dept"
+            [(ngModel)]="etudiant.codeDept"
+            aria-label="Floating label select example">
+      <option value=""  >Choisir un departement</option>
+      <option *ngFor="let dept of listeDept" [value]="dept.code">{{dept.nom}}</option>
+
+    </select>
+    <label for="floatingDept">Departement</label>
+  </div>
+  <div class="form-floating mb-3">
+    <select class="form-select"
+            required
+            *ngIf="listFilieres"
+            #classe="ngModel"
+            [class.is-valid]="classe.valid && classe.dirty"
+            [class.is-invalid]="classe.invalid && classe.touched"
+            name="classe"
+            [(ngModel)]="etudiant.codeClasse"
+            id="floatingClasse"
+            aria-label="Floating label select example">
+      <option value="" selected >Choisir une classe</option>
       <option value="ING1">ING1</option>
       <option value="ING2">ING2</option>
       <option value="ING3">ING3</option>
@@ -35,25 +126,28 @@
     <label for="floatingClasse">Classe</label>
   </div>
   <div class="form-floating mb-3">
-    <select class="form-select" id="floatingDept"
-            (change)="listeFiliere()"
+    <select class="form-select"
+            required
+            #filiere="ngModel"
+            [class.is-valid]="filiere.valid && filiere.dirty"
+            [class.is-invalid]="filiere.invalid && filiere.touched"
+            name="filiere"
+            [(ngModel)]="etudiant.codeFiliere"
+            id="floatingFiliere"
             aria-label="Floating label select example">
-      <option value="" >Choisir un departement</option>
-      <option *ngFor="let dept of listeDept" [value]="dept.code">{{dept.nom}}</option>
-
-    </select>
-    <label for="floatingDept">Departement</label>
-  </div>
-  <div class="form-floating mb-3">
-    <select class="form-select" id="floatingFiliere" aria-label="Floating label select example">
-      <option value="" >Choisir une filiere</option>
+      <option value="" selected >Choisir une filiere</option>
       <option *ngFor="let fil of listFilieres" [value]="fil.code">{{fil.nom}}</option>
 
     </select>
     <label for="floatingFiliere">Filiere</label>
   </div>
-  <button type="submit" class="btn btn-primary me-2">Ajouter</button>
-  <button type="reset" class="btn btn-primary me-2">Annuler</button>
+  <button type="submit"
+          class="btn btn-primary me-2"
+          [disabled]="etudiantForm.invalid"
+          (click)="enregistrer()">Ajouter</button>
+  <button type="reset"
+          class="btn btn-outline-danger me-2"
+          (click)="annuler()">Annuler</button>
 </form>
 
 </div>

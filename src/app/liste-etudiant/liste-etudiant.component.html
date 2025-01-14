@@ -28,7 +28,7 @@
         <span>{{e.telefone}}</span><br>
 
         <span> Classe : </span>
-        <span>{{e.classe?.nom}}</span><br>
+        <span>{{e.classe.nom}}</span><br>
           <input [type]="inputType" [value]="inputValue"/>
           <div style="float: right;" *ngIf="selectedEtudiant?.code==e.code">
             <button type="button" class="btn btn-link mx-2 " [disabled]="e.classe.filiere.code!='INF'" >Details </button>
