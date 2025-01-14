@@ -27,6 +27,19 @@ export interface Etudiant{
   email: string;
   classe: Classe;
 }
+
+export interface EtudiantDTO{
+  code: string;
+  nom: string;
+  prenom: string;
+  adresse: string;
+  telefone: string;
+  email: string;
+  codeClasse: string;
+  codeFiliere: string;
+  codeDept: string;
+}
+
 export interface Carte{
   id: number;
   dateDel: Date;

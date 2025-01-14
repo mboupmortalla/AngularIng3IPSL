@@ -5,6 +5,7 @@ import { ListeEnseignantComponent } from './liste-enseignant/liste-enseignant.co
 import { Error404Component } from './error404/error404.component';
 import {DetailEtudiantComponent} from "./detail-etudiant/detail-etudiant.component";
 import {ListeEtudiant2Component} from "./liste-etudiant2/liste-etudiant2.component";
+import {AddEtudiantComponent} from "./add-etudiant/add-etudiant.component";
 
 export const routes: Routes = [
     {path: "",redirectTo:"/acceuil",pathMatch:'full'},
@@ -13,5 +14,6 @@ export const routes: Routes = [
     {path:"enseignants",component:ListeEnseignantComponent},
     {path:"detailEtudiant",component:DetailEtudiantComponent},
     {path:"list2",component:ListeEtudiant2Component},
+    {path:'addEtudiant',component:AddEtudiantComponent},
     {path:"**",component:Error404Component}
 ];
